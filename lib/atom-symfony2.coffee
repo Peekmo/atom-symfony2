@@ -7,13 +7,13 @@ module.exports =
         console:
             title: 'Relative path to console file'
             description: 'Relative path to symfony2 console file (default app/console)'
-            type: 'string'
-            default: 'app/console'
+            type: 'array'
+            default: ['app/console']
             order: 1
 
     activate: ->
         config.init()
-        
+
     deactivate: ->
 
     getAutocompleteTools: (tools) ->
