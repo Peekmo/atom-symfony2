@@ -3,8 +3,8 @@ config = require '../config.coffee'
 module.exports =
     phpProxy: null
     data:
-        services: []
-        routes: []
+        services: {}
+        routes: {}
 
     ###*
      * Execute a symfony2 command
@@ -15,7 +15,6 @@ module.exports =
         for directory in atom.project.getDirectories()
             for cons in config.config["console"]
                 res = @phpProxy.execute([cons].concat(command), false, {cwd: directory.path}, true)
-
                 if not res.error? and res.result?.split("\n").length > 2
                     return res
                 else
@@ -36,11 +35,11 @@ module.exports =
      * @return {array}
     ###
     getServices: () ->
-        if @data.services.length == 0
+        if Object.keys(@data.services).length == 0
             @data.services = {}
 
             lines = @execute("debug:container")
-            if lines != []
+            if lines != [] and lines.result
                 lines = lines.result.split("\n")
 
             list = false
@@ -56,8 +55,6 @@ module.exports =
 
                 if result and result[1]? and result[2]? and not result[3]?
                     @data.services[result[1]] = result[2]
-
-            console.log @data.services
 
         return @data.services
 
