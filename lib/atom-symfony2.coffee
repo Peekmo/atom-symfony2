@@ -1,7 +1,7 @@
 {CompositeDisposable} = require 'atom'
 proxy = require './services/symfony2-proxy.coffee'
 config = require './config.coffee'
-FileServiceProvider = require './providers/file-service-provider.coffee'
+YamlServiceProvider = require './providers/services/yaml-service-provider.coffee'
 
 module.exports =
     config:
@@ -14,7 +14,9 @@ module.exports =
 
     activate: ->
         config.init()
-        @provider = new FileServiceProvider
+
+        @providers = []
+        @providers.push(new YamlServiceProvider)
 
     deactivate: ->
 
@@ -22,4 +24,4 @@ module.exports =
         proxy.providePhpProxy(tools.proxy)
 
     getProvider: ->
-        return [@provider]
+        return @providers

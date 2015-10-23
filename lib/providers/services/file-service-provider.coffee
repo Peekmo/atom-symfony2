@@ -1,13 +1,11 @@
-proxy = require '../services/symfony2-proxy.coffee'
+proxy = require '../../services/symfony2-proxy.coffee'
 fuzzaldrin = require 'fuzzaldrin'
 
 module.exports =
 class FileServiceProvider
-    selector: '.source.yaml'
     inclusionPriority: 1
 
-    getSuggestions: ({editor, bufferPosition, scopeDescriptor, prefix}) ->
-        @regex = /@([^\s]*)[\s]*/g
+    fetchSuggestions: ({editor, bufferPosition, scopeDescriptor, prefix}) ->
         line = editor.getTextInRange([[bufferPosition.row, 0], bufferPosition])
 
         result = @regex.exec(line)
