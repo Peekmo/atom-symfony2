@@ -13,6 +13,9 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
+  "package-deps": [
+    "atom-autocomplete-php"
+  ],
   "dependencies": {
     "fuzzaldrin": "^2.1.0"
   },
