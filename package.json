@@ -29,7 +29,7 @@
   "consumedServices": {
     "php.autocomplete.tools": {
       "versions": {
-        "0.15.0": "getAutocompleteTools"
+        "0.16.0": "getAutocompleteTools"
       }
     }
   }
