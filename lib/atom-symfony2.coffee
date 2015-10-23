@@ -2,6 +2,7 @@
 proxy = require './services/symfony2-proxy.coffee'
 config = require './config.coffee'
 YamlServiceProvider = require './providers/services/yaml-service-provider.coffee'
+XmlServiceProvider = require './providers/services/xml-service-provider.coffee'
 
 module.exports =
     config:
@@ -17,6 +18,7 @@ module.exports =
 
         @providers = []
         @providers.push(new YamlServiceProvider)
+        @providers.push(new XmlServiceProvider)
 
     deactivate: ->
 

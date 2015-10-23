@@ -17,5 +17,6 @@ class FileServiceProvider
             suggestions.push
                 text: word
                 leftLabel: proxy.getServices()[word].split("\\").pop()
+                prefix: result[1]
 
         return suggestions
