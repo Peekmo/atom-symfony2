@@ -1,12 +1,12 @@
 {
   "name": "atom-symfony2",
   "main": "./lib/atom-symfony2",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Symfony2 tools and completion",
   "keywords": [
-      "php",
-      "symfony2",
-      "autocomplete"
+    "php",
+    "symfony2",
+    "autocomplete"
   ],
   "repository": "https://github.com/peekmo/atom-symfony2",
   "license": "MIT",
@@ -27,10 +27,10 @@
     }
   },
   "consumedServices": {
-      "php.autocomplete.tools": {
-        "versions": {
-          "0.15.0": "getAutocompleteTools"
-        }
+    "php.autocomplete.tools": {
+      "versions": {
+        "0.15.0": "getAutocompleteTools"
       }
     }
+  }
 }
