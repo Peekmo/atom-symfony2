@@ -1,0 +1,26 @@
+{
+  "name": "atom-symfony2",
+  "main": "./lib/atom-symfony2",
+  "version": "0.0.0",
+  "description": "A short description of your package",
+  "keywords": [
+      "php",
+      "symfony2",
+      "autocomplete"
+  ],
+  "repository": "https://github.com/atom/atom-symfony2",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "fuzzaldrin": "^2.1.0"
+  },
+  "consumedServices": {
+      "php.autocomplete.tools": {
+        "versions": {
+          "0.15.0": "getAutocompleteTools"
+        }
+      }
+    }
+}
