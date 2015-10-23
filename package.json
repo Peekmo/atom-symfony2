@@ -2,13 +2,13 @@
   "name": "atom-symfony2",
   "main": "./lib/atom-symfony2",
   "version": "0.0.0",
-  "description": "A short description of your package",
+  "description": "Symfony2 tools and completion",
   "keywords": [
       "php",
       "symfony2",
       "autocomplete"
   ],
-  "repository": "https://github.com/atom/atom-symfony2",
+  "repository": "https://github.com/peekmo/atom-symfony2",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"

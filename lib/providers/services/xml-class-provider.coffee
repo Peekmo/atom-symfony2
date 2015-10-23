@@ -1,10 +1,10 @@
-FileServiceProvider = require './file-service-provider.coffee'
+FileClassProvider = require './file-class-provider.coffee'
 
 module.exports =
-class XmlServiceProvider extends FileServiceProvider
+class XmlClassProvider extends FileClassProvider
     selector: '.text.xml'
 
     getSuggestions: ({editor, bufferPosition, scopeDescriptor, prefix}) ->
-        @regex = /argument[^>]+id[\s]*=[\s]*[\"]([^\"]*)[\"]*/g
+        @regex = /class[\s]*=[\s]*[\"]([^\"]*)[\"]*/g
 
         return @fetchSuggestions({editor, bufferPosition, scopeDescriptor, prefix})

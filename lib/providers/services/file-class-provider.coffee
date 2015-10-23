@@ -2,7 +2,7 @@ proxy = require '../../services/symfony2-proxy.coffee'
 fuzzaldrin = require 'fuzzaldrin'
 
 module.exports =
-class FileServiceProvider
+class FileClassProvider
     inclusionPriority: 1
 
     fetchSuggestions: ({editor, bufferPosition, scopeDescriptor, prefix}) ->
@@ -11,13 +11,13 @@ class FileServiceProvider
         result = @regex.exec(line)
         return unless result?[1]?
 
-        words = fuzzaldrin.filter Object.keys(proxy.getServices()), result[1]
+        @classes = proxy.phpProxy.classes()
+
+        words = fuzzaldrin.filter @classes.autocomplete, result[1]
         suggestions = []
         for word in words
             suggestions.push
                 text: word
-                type: 'tag'
-                leftLabel: proxy.getServices()[word].split("\\").pop()
-                prefix: result[1]
+                type: 'class'
 
         return suggestions
