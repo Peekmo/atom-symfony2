@@ -37,7 +37,27 @@ module.exports =
     ###
     getServices: () ->
         if @data.services.length == 0
-            @data.services = @execute("debug:container")
+            @data.services = {}
+
+            lines = @execute("debug:container")
+            if lines != []
+                lines = lines.result.split("\n")
+
+            list = false
+            for line in lines
+                if list == false
+                    if line.indexOf("Service ID") != -1
+                        list = true
+                    continue
+
+                ## @TODO Manage aliases
+                regex = /([^\s]+)[\s]+([^\s]+)/g
+                result = regex.exec(line)
+
+                if result and result[1]? and result[2]? and not result[3]?
+                    @data.services[result[1]] = result[2]
+
+            console.log @data.services
 
         return @data.services
 
