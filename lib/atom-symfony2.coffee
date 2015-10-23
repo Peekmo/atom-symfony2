@@ -1,6 +1,7 @@
 {CompositeDisposable} = require 'atom'
 proxy = require './services/symfony2-proxy.coffee'
 config = require './config.coffee'
+FileServiceProvider = require './providers/file-service-provider.coffee'
 
 module.exports =
     config:
@@ -13,9 +14,12 @@ module.exports =
 
     activate: ->
         config.init()
+        @provider = new FileServiceProvider
 
     deactivate: ->
 
     getAutocompleteTools: (tools) ->
         proxy.providePhpProxy(tools.proxy)
-        console.log proxy.getServices()
+
+    getProvider: ->
+        return [@provider]

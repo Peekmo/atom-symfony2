@@ -16,6 +16,13 @@
   "dependencies": {
     "fuzzaldrin": "^2.1.0"
   },
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "getProvider"
+      }
+    }
+  },
   "consumedServices": {
       "php.autocomplete.tools": {
         "versions": {
