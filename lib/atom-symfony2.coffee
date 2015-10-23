@@ -18,3 +18,4 @@ module.exports =
 
     getAutocompleteTools: (tools) ->
         proxy.providePhpProxy(tools.proxy)
+        console.log proxy.getRoutes()
