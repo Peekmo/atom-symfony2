@@ -1,6 +1,7 @@
 {CompositeDisposable} = require 'atom'
 proxy = require './services/symfony2-proxy.coffee'
 config = require './config.coffee'
+plugin = require './plugin.coffee'
 YamlServiceProvider = require './providers/services/yaml-service-provider.coffee'
 YamlClassProvider = require './providers/services/yaml-class-provider.coffee'
 XmlServiceProvider = require './providers/services/xml-service-provider.coffee'
@@ -17,6 +18,7 @@ module.exports =
 
     activate: ->
         config.init()
+        proxy.init()
 
         @providers = []
         @providers.push(new YamlServiceProvider)
@@ -28,6 +30,9 @@ module.exports =
 
     getAutocompleteTools: (tools) ->
         proxy.providePhpProxy(tools.proxy)
+
+    getPhpPlugin: ->
+        return plugin
 
     getProvider: ->
         return @providers

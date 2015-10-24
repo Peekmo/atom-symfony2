@@ -24,6 +24,11 @@
       "versions": {
         "2.0.0": "getProvider"
       }
+    },
+    "autocomplete.php.plugin": {
+      "versions": {
+        "1.0.0": "getPhpPlugin"
+      }
     }
   },
   "consumedServices": {

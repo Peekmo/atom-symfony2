@@ -30,7 +30,7 @@ module.exports =
         @phpProxy = proxy
 
     ###*
-     * Retourne les services sf2 du projet
+     * Returns sf2 services
      *
      * @return {array}
     ###
@@ -59,7 +59,7 @@ module.exports =
         return @data.services
 
     ###*
-     * Retourne les services sf2 du projet
+     * Returns SF2 routes
      *
      * @return {array}
     ###
@@ -68,3 +68,20 @@ module.exports =
             @data.routes = @execute("debug:router")
 
         return @data.routes
+
+    ###*
+     * Clear all cache of the plugin
+    ###
+    clearCache: () ->
+        @data =
+            services: {}
+            routes: {}
+
+    ###*
+     * Method called on plugin activation
+    ###
+    init: () ->
+        atom.workspace.observeTextEditors (editor) =>
+            editor.onDidSave((event) =>
+                @clearCache()
+            )
