@@ -9,7 +9,7 @@ Note : This package is in its early stage, feel free to help or to report issues
 
 - Autocomplete on service names in .xml files and .yml files
 - Autocomplete on class names in .xml files and .yml files
-- More to come...
+- Services completion in symfony2 controllers (or everywhere you're using the container)
 
 # Configuration
 
