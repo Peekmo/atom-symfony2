@@ -12,6 +12,9 @@ module.exports =
      * @return {mixed}
     ###
     execute: (command) ->
+        if !@phpProxy
+            return []
+
         for directory in atom.project.getDirectories()
             for cons in config.config["console"]
                 res = @phpProxy.execute([cons].concat(command), false, {cwd: directory.path}, true)
