@@ -11,13 +11,13 @@ class FileServiceProvider
         result = @regex.exec(line)
         return unless result?[1]?
 
-        words = fuzzaldrin.filter Object.keys(proxy.getServices()), result[1]
+        services = proxy.getServices()
+        words = fuzzaldrin.filter Object.keys(services), result[1]
         suggestions = []
         for word in words
             suggestions.push
                 text: word
                 type: 'tag'
-                leftLabel: proxy.getServices()[word].split("\\").pop()
-                prefix: result[1]
+                leftLabel: services[word].split("\\").pop()
 
         return suggestions

@@ -42,6 +42,7 @@ module.exports =
             @data.services = {}
 
             lines = @execute("debug:container")
+
             if lines != [] and lines.result
                 lines = lines.result.split("\n")
 

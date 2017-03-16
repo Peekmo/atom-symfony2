@@ -37,12 +37,13 @@ class ServiceProvider
         return unless plugin.isService(className, 'get')
 
         suggestions = []
-        words = fuzzaldrin.filter Object.keys(proxy.getServices()), result[1]
+        services = proxy.getServices()
+        words = fuzzaldrin.filter Object.keys(services), result[1]
+
         for word in words
             suggestions.push
                 text: word
                 type: 'tag'
-                leftLabel: proxy.getServices()[word].split("\\").pop()
-                prefix: result[1]
+                leftLabel: services[word].split("\\").pop()
 
         return suggestions
