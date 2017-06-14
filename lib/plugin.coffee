@@ -3,7 +3,8 @@ proxy = require './services/symfony2-proxy.coffee'
 module.exports =
     classes: [
         "Symfony\\Component\\DependencyInjection\\ContainerInterface",
-        "Symfony\\Component\\DependencyInjection\\Container"
+        "Symfony\\Component\\DependencyInjection\\Container",
+        "Doctrine\\Bundle\\DoctrineBundle\\Registry"
     ]
 
     ###*
@@ -35,6 +36,18 @@ module.exports =
     ###
     isService: (parent, methodName) ->
         if methodName == "get" && (@classes.indexOf(parent) != -1 || parent.endsWith("Controller"))
+            return true
+
+        return false
+
+    ###*
+     * Checks if we should returns completion on repositories
+     * @param  {string}  parent
+     * @param  {string}  methodName
+     * @return {Boolean}
+    ###
+    isRepository: (parent, methodName) ->
+        if methodName == "getRepository" && @classes.indexOf(parent) != -1
             return true
 
         return false

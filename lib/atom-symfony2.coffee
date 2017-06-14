@@ -8,6 +8,7 @@ YamlClassProvider = require './providers/services/yaml-class-provider.coffee'
 XmlServiceProvider = require './providers/services/xml-service-provider.coffee'
 XmlClassProvider = require './providers/services/xml-class-provider.coffee'
 ServiceProvider = require './providers/service-provider.coffee'
+RepositoryProvider = require './providers/repository-provider.coffee'
 
 module.exports =
     config:
@@ -28,6 +29,7 @@ module.exports =
         @providers.push(new XmlServiceProvider)
         @providers.push(new XmlClassProvider)
         @providers.push(new ServiceProvider)
+        @providers.push(new RepositoryProvider)
 
     deactivate: ->
 
